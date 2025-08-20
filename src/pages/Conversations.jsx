@@ -27,7 +27,7 @@ const Conversations = () => {
     setUserInput("");
     try {
       const response = await axios.post(
-        ` ${process.env.BACKEND_URL}/personaAI/create`,
+        ` ${import.meta.env.VITE_API_BACKEND_URL}/personaAI/create`,
         payload
       );
       setMessages([...messages, ...[response?.data?.message]]);
