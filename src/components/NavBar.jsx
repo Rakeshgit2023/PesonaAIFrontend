@@ -31,7 +31,7 @@ const NavBar = ({ selectedUser }) => {
       <div className="flex gap-4 md:gap-8 text-purple-900 text-sm md:text-[17px]">
         <a
           className="flex gap-2 items-center cursor-pointer"
-          href="https://www.linkedin.com/in/shawrakesh/"
+          href="https://github.com/Rakeshgit2023/PesonaAIFrontend"
           target="_blank"
         >
           <LuGithub />
