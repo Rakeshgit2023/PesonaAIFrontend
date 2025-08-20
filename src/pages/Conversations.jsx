@@ -27,7 +27,7 @@ const Conversations = () => {
     setUserInput("");
     try {
       const response = await axios.post(
-        ` https://personaaibackend-1.onrender.com/personaAI/create`,
+        ` ${process.env.BACKEND_URL}/personaAI/create`,
         payload
       );
       setMessages([...messages, ...[response?.data?.message]]);
