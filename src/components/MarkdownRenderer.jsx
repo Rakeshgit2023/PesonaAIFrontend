@@ -5,37 +5,21 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { LuCopy } from "react-icons/lu";
 const MarkdownRenderer = ({ content }) => {
-  const [loadingCopy, setLoadingCopy] = useState(false);
-  const handleCopy = (text) => {
-    setLoadingCopy(true);
-    navigator.clipboard.writeText(text);
-    setTimeout(() => {
-      setLoadingCopy(false);
-    }, 1000);
-  };
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
         code({ node, inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || "");
+          const codeText = String(children).trim();
+
           return !inline && match ? (
             <div className="relative bg-gray-900 rounded-lg my-2">
               <button
-                onClick={() => handleCopy(String(children).trim())}
+                onClick={() => navigator.clipboard.writeText(codeText)}
                 className="absolute cursor-pointer top-2 right-2 flex gap-2 bg-gray-700 text-white text-xs px-2 py-1 rounded hover:bg-gray-600"
               >
-                {loadingCopy ? (
-                  <span>Copied</span>
-                ) : (
-                  <>
-                    {" "}
-                    <div>
-                      <LuCopy />
-                    </div>
-                    <span>Copy code</span>
-                  </>
-                )}
+                Copy
               </button>
               <SyntaxHighlighter
                 style={oneDark}
