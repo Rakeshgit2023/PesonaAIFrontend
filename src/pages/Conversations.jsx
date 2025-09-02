@@ -85,7 +85,7 @@ const Conversations = () => {
         } else {
           clearInterval(interval);
         }
-      }, 1); // Adjust typing speed here
+      }, 0); // Adjust typing speed here
 
       return () => clearInterval(interval);
     }
